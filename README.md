@@ -14,3 +14,11 @@ WeiTechnologyEra 客户端MCBBS原贴https://www.mcbbs.net/thread-793753-1-1.htm
 本程序使用了开源的BetterFps 提供内置的BetterFps更换算法方式
 
 本人只是入门程序猿，若有问题欢迎反馈【虽然不一定能解决】
+
+此程序只是一时兴起写的，因为网上找了一圈没有发现满足我需求的软件
+
+若有需要可以自取修改
+
+依赖库在lib文件夹下
+
+自动安装功能由HMCL实现
