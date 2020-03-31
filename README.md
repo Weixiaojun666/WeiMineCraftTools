@@ -21,4 +21,4 @@ WeiTechnologyEra 客户端MCBBS原贴https://www.mcbbs.net/thread-793753-1-1.htm
 
 依赖库在lib文件夹下
 
-自动安装功能由HMCL实现
+自动安装功能由HMCL实现https://github.com/huanghongxun/HMCL
