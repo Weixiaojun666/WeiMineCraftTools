@@ -7,6 +7,7 @@ WeiMineCraftTools
 用于自动获取更新更新 和快捷切换BetterFps 的算法
 
 新版本已添加核电模拟器小工具来自https://github.com/MauveCloud/Ic2ExpReactorPlanner
+
 汉化版本来自MCBBS https://www.mcbbs.net/thread-787339-1-1.html
 
 WeiTechnologyEra 客户端MCBBS原贴https://www.mcbbs.net/thread-793753-1-1.html
