@@ -24,6 +24,8 @@ import javax.swing.JPanel;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 
+import weixiaojun.Tools;
+
 /**
  * @author Guilherme Chaguri
  */
@@ -249,32 +251,33 @@ public class BetterFps extends JDialog implements ActionListener {
 		} else if (action.equals(CHANGE_ALGORITHM)) {
 
 			try {
-				System.out.println("更改算法为"+bestAlgorithm);
+				System.out.println("更改算法为" + bestAlgorithm);
 				saveAlgorithm(bestAlgorithm);
 			} catch (Exception ex) {
 				error("Couldn't save the algorithm: %s", ex.getMessage());
 			}
-			setVisible(false);
+			Tools.main(null);
+			dispose();
 
 		}
 	}
-    public void saveAlgorithm(String bestAlgorithm) throws IOException {
-    	File directory = new File(".");
-    	File fileold = new File(directory.getCanonicalPath() + "\\.minecraft\\betterfps.txt");
-    	File filenew = new File(directory.getCanonicalPath() + "\\.minecraft\\config\\betterfps.json");
-    	fileold.delete();
-    	fileold.createNewFile();
-    	BufferedWriter out = new BufferedWriter(new FileWriter(fileold));
-    	out.write("#BetterFps Config\r\n");
-    	out.write("#By WeiMinecraftTools\r\n");
-    	out.write("algorithm=");
-    	out.write(bestAlgorithm);
-    	out.flush();
-    	out.close();
-    	
+
+	public void saveAlgorithm(String bestAlgorithm) throws IOException {
+		File directory = new File(".");
+		File fileold = new File(directory.getCanonicalPath() + "\\.minecraft\\betterfps.txt");
+		File filenew = new File(directory.getCanonicalPath() + "\\.minecraft\\config\\betterfps.json");
+		fileold.delete();
+		fileold.createNewFile();
+		BufferedWriter out = new BufferedWriter(new FileWriter(fileold));
+		out.write("#BetterFps Config\r\n");
+		out.write("#By WeiMinecraftTools\r\n");
+		out.write("algorithm=");
+		out.write(bestAlgorithm);
+		out.flush();
+		out.close();
+
     	JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(filenew, "UTF-8"));
     	jsonObject.put("algorithm",bestAlgorithm);
-    	
-    	
-    }
+    	FileUtils.writeStringToFile(filenew,jsonObject.toString(), "UTF-8");
+	}
 }

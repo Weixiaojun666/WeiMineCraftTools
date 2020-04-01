@@ -50,7 +50,7 @@ public class GUI extends JFrame {
 		JButton jb2 = new JButton("检查更新");
 		JButton jb3 = new JButton("BetterFps");
 		JButton jb4 = new JButton("核电模拟器");
-		JButton jb5 = new JButton("关于");
+		JButton jb5 = new JButton("设置");
 
 		cp.add(logo);
 		cp.add(jl);
@@ -63,9 +63,9 @@ public class GUI extends JFrame {
 			cp.add(jb3);
 		if (Tools.ClientjsonObject.getBoolean("Ic2ExpReactorPlanner"))
 			cp.add(jb4);
-		
+
 		cp.add(jb5);
-		
+
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) screensize.getWidth() / 2 - getWidth() / 2;
 		int y = (int) screensize.getHeight() / 2 - getHeight() / 2;
@@ -90,11 +90,8 @@ public class GUI extends JFrame {
 		jb2.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				jb1.setEnabled(false);
-				jb2.setEnabled(false);
 				Download.update();
-				jb1.setEnabled(true);
-				jb2.setEnabled(true);
+				dispose();
 
 			}
 
@@ -105,6 +102,7 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				BetterFps tester = new BetterFps();
 				tester.setVisible(true);
+				dispose();
 
 			}
 
@@ -112,9 +110,8 @@ public class GUI extends JFrame {
 		jb4.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				String tmp[]=null;
-				ReactorPlannerFrame.main(tmp);
+				ReactorPlannerFrame.main(null);
+				dispose();
 
 			}
 
@@ -122,18 +119,8 @@ public class GUI extends JFrame {
 		jb5.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-			    String url = "https://github.com/Weixiaojun666/WeiMineCraftTools"; 
-			    java.net.URI uri = java.net.URI.create(url);
-			    java.awt.Desktop dp = java.awt.Desktop.getDesktop(); 
-			    if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) { 
-			    	dp.browse(uri);
-			    }
-			    }catch (java.io.IOException e) {  
-			        e.printStackTrace(); 
-			       } 
-
-
+				new Setting();
+				dispose();
 			}
 
 		});

@@ -13,24 +13,46 @@ public class Tools {
 	public static JSONObject ClientjsonObject;
 	public static JSONObject ServerjsonObject;
 	public static double version;
+	public static double Weiversion = 1;
+	public static String edition;
+	public static String url;
+	public static String Launcher;
+	public static Boolean domestic;
+	public static Boolean BetterFps;
+	public static Boolean Ic2ExpReactorPlanner;
+	public static File JSONFile;
 
 	public static void main(String[] args) {
-
-		File file = new File("WeiTools.json");
-		if (!file.exists()) {
-			JOptionPane.showMessageDialog(null, "未找到配置文件 WeiUpdater.json!", "未找到配置文件 WeiUpdater.json!",
+		try {
+		File directory = new File(".");
+	
+		JSONFile = new File(directory.getCanonicalPath() + "\\.minecraft\\WeiMineCraftTools.json");
+		
+		if (!JSONFile.exists()) {
+			JOptionPane.showMessageDialog(null, "未找到WeiMineCraftTools配置文件，无法正常获取客户端信息！", "未找到WeiMineCraftTools配置文件!",
 					JOptionPane.ERROR_MESSAGE);
 			System.exit(1);
 		}
 		String client = null;
-		try {
-			client = FileUtils.readFileToString(file, "UTF-8");
+		
+			client = FileUtils.readFileToString(JSONFile, "UTF-8");
+			ClientjsonObject = new JSONObject(client);
+			version = ClientjsonObject.getDouble("version");
+			Launcher = ClientjsonObject.getString("Launcher");
+			domestic = ClientjsonObject.getBoolean("domestic");
+			edition = ClientjsonObject.getString("edition");
+			BetterFps = ClientjsonObject.getBoolean("BetterFps");
+			Ic2ExpReactorPlanner = ClientjsonObject.getBoolean("Ic2ExpReactorPlanner");
+			if (domestic) {
+				url = ClientjsonObject.getString("url1");
+			} else {
+				url = ClientjsonObject.getString("url2");
+			}
+			new GUI();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ClientjsonObject = new JSONObject(client);
-		version = ClientjsonObject.getDouble("version");
-		new GUI();
+		
 	}
 
 	public static void ServerjsonObject(File file) {

@@ -18,7 +18,7 @@ public class Download {
 	public static void update() {
 		try {
 			File dirfile = File.createTempFile("WeiMineCraftToolUpdater", ".json");
-			URL httpurl = new URL(Tools.ClientjsonObject.getString("url"));
+			URL httpurl = new URL(Tools.url);
 			if (!dirfile.exists()) {
 				dirfile.mkdirs();
 			}
@@ -32,7 +32,7 @@ public class Download {
 				int choose = JOptionPane.showConfirmDialog(null, j0, "已发现更新！是否更新?", JOptionPane.YES_NO_OPTION);
 
 				if (choose == JOptionPane.YES_OPTION) {
-					Downloads(Tools.ServerjsonObject.getString("url"));
+					Downloads(Tools.url);
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "当前已为最新版,无需更新!", "当前已为最新版,无需更新!", JOptionPane.INFORMATION_MESSAGE);
@@ -62,7 +62,8 @@ public class Download {
 					if (file.exists()) {
 						file.delete();
 					}
-					//file = File.createTempFile("WeiMinecraftToolsData", "." + url.substring(url.lastIndexOf(".") + 1));
+					// file = File.createTempFile("WeiMinecraftToolsData", "." +
+					// url.substring(url.lastIndexOf(".") + 1));
 
 					int responseCode = urlConnection.getResponseCode();
 					if (responseCode >= 200 && responseCode < 300) {
@@ -89,12 +90,10 @@ public class Download {
 						Progress.Sexit();
 
 						new Install();
-						System.out.println(file);
-						System.out.println(directory.getCanonicalPath());
+
 						JOptionPane.getRootFrame().dispose();
 						JOptionPane.showMessageDialog(null, "更新完成!", "提示", 1);
 						file.delete();
-						
 
 					}
 				} catch (Exception e) {
