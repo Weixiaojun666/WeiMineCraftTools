@@ -6,7 +6,7 @@ import java.io.IOException;
 import weixiaojun.Tools;
 
 public class Install {
-	public Install(File Data) {
+	public Install() {
 		File directory = new File(".");
 		try {
 			File fileold = new File(directory.getCanonicalPath() + "\\.minecraft\\version.old\\V" + Tools.version);
@@ -30,8 +30,8 @@ public class Install {
 				moveFile(Tmp, new File(fileold + "\\hmcl.jsom"));
 			}
 			Tmp = new File(directory.getCanonicalPath() + "\\.minecraft\\version");
-			moveDirectory(Tmp, new File(fileold + "\\version"));
-			moveFile(Data, new File(directory.getCanonicalPath() + "//modpack.zip"));
+			//moveDirectory(Tmp, new File(fileold + "\\version"));
+			//moveFile(Data, new File(directory.getCanonicalPath() + "//modpack.zip"));
 
 			try {
 				Runtime.getRuntime().exec("java -jar " + Tools.ClientjsonObject.getString("Launcher"));

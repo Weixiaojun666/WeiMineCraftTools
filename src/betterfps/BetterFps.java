@@ -39,25 +39,6 @@ public class BetterFps extends JDialog implements ActionListener {
 		System.err.println(String.format(log, data));
 	}
 
-	public static void main(String[] args) {
-		warmupClasses();
-		Map<String, Long> data = benchmark(1000000000, 5000);
-
-		String bestAlgorithm = null;
-		long bestTime = Long.MAX_VALUE;
-
-		for (String key : data.keySet()) {
-			long time = data.get(key);
-			if (time < bestTime) {
-				bestAlgorithm = key;
-				bestTime = time;
-			}
-		}
-
-		System.out.println(bestAlgorithm);
-		System.exit(0);
-	}
-
 	private static void warmupClasses() {
 		// Initialize the classes, so the loading time will not count in the
 		// startBenchmark

@@ -52,12 +52,17 @@ public class Download {
 			public void run() {
 				InputStream inputStream = null;
 				RandomAccessFile randomAccessFile = null;
+				File directory = new File(".");
 
 				try {
 					HttpURLConnection urlConnection = (HttpURLConnection) new URL(url).openConnection();
 					urlConnection.setRequestMethod("GET");
 					urlConnection.setConnectTimeout(10 * 1000);
-					file = File.createTempFile("WeiMinecraftToolsData", "." + url.substring(url.lastIndexOf(".") + 1));
+					file = new File(directory.getCanonicalPath() + "\\modpack.zip");
+					if (file.exists()) {
+						file.delete();
+					}
+					//file = File.createTempFile("WeiMinecraftToolsData", "." + url.substring(url.lastIndexOf(".") + 1));
 
 					int responseCode = urlConnection.getResponseCode();
 					if (responseCode >= 200 && responseCode < 300) {
@@ -83,13 +88,13 @@ public class Download {
 
 						Progress.Sexit();
 
-						File directory = new File(".");
+						new Install();
 						System.out.println(file);
 						System.out.println(directory.getCanonicalPath());
-
 						JOptionPane.getRootFrame().dispose();
 						JOptionPane.showMessageDialog(null, "更新完成!", "提示", 1);
 						file.delete();
+						
 
 					}
 				} catch (Exception e) {
