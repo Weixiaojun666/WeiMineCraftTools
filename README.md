@@ -12,7 +12,7 @@ WeiMineCraftTools
 
 WeiTechnologyEra 客户端MCBBS原贴https://www.mcbbs.net/thread-793753-1-1.html
 
-提供高速下载服务需要支付高昂的服务费用，若想帮我请点https://donate.weixiaojun.org.cn/
+提供高速下载服务需要支付高昂的服务费用，若想帮我请点https://afdian.net/@Weixiaojun
 
 本程序使用了开源的BetterFps 提供内置的BetterFps更换算法方式https://github.com/Guichaguri/BetterFps
 
