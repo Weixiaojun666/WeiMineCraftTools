@@ -1,9 +1,11 @@
 package install;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import javax.swing.JLabel;
@@ -24,15 +26,39 @@ public class Download {
 			}
 			FileUtils.copyURLToFile(httpurl, dirfile);
 			Tools.ServerjsonObject(dirfile);
-
+			int choose;
+			if (Tools.ServerjsonObject.getDouble("replace") > Tools.Weiversion) {
+				choose = JOptionPane.showConfirmDialog(null, "已发现当前程序有更新，请点击确定后手动下载并覆盖 反之忽略此次更新继续更新客户端", "已发现更新！是否更新?",
+						JOptionPane.YES_NO_OPTION);
+				if (choose == JOptionPane.YES_OPTION) {
+					URI uri = java.net.URI.create(Tools.ServerjsonObject.getString("reurl"));
+					Desktop dp = java.awt.Desktop.getDesktop();
+					if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) {
+						dp.browse(uri);
+						System.exit(0);
+					}
+				}
+			}
 			if (Tools.ServerjsonObject.getDouble("version") > Tools.version) {
 				JLabel j0 = new JLabel("已发现新版本:" + Tools.ServerjsonObject.getDouble("version") + "更新内容:"
 						+ Tools.ServerjsonObject.getString("log"));
 				j0.setFont(new java.awt.Font("Dialog", 1, 15));
-				int choose = JOptionPane.showConfirmDialog(null, j0, "已发现更新！是否更新?", JOptionPane.YES_NO_OPTION);
+				choose = JOptionPane.showConfirmDialog(null, j0, "已发现更新！是否更新?", JOptionPane.YES_NO_OPTION);
 
 				if (choose == JOptionPane.YES_OPTION) {
-					Downloads(Tools.url);
+					if (Tools.ServerjsonObject.getBoolean("warning")) {
+						choose = JOptionPane.showConfirmDialog(null, "当前更新可能会损害存档，是否继续？", "已发现更新！是否更新?",
+								JOptionPane.YES_NO_OPTION);
+					}
+					if (choose == JOptionPane.YES_OPTION) {
+						String Downurl;
+						if (Tools.edition.equals("1.7.10")) {
+							Downurl = Tools.ServerjsonObject.getString("1.7.10url");
+						} else {
+							Downurl = Tools.ServerjsonObject.getString("1.12.2url");
+						}
+						Downloads(Downurl);
+					}
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "当前已为最新版,无需更新!", "当前已为最新版,无需更新!", JOptionPane.INFORMATION_MESSAGE);

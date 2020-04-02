@@ -1,6 +1,7 @@
 package weixiaojun;
 
 import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -8,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URI;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -166,9 +168,8 @@ public class Setting extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String url = "https://github.com/Weixiaojun666/WeiMineCraftTools";
-					java.net.URI uri = java.net.URI.create(url);
-					java.awt.Desktop dp = java.awt.Desktop.getDesktop();
+					URI uri = java.net.URI.create("https://github.com/Weixiaojun666/WeiMineCraftTools");
+					Desktop dp = java.awt.Desktop.getDesktop();
 					if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) {
 						dp.browse(uri);
 					}

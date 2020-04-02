@@ -11,12 +11,11 @@ public class Install {
 	public Install() {
 		File directory = new File(".");
 		try {
-			File tmp = new File(directory.getCanonicalPath() + "\\.minecraft\\versions.old");
+			File tmp = new File(directory.getCanonicalPath() + "\\.minecraft\\WeiMineCraftTools.old");
 			if (tmp.exists())
 				FileUtils.deleteDirectory(tmp);
 			File oldpath = new File(directory.getCanonicalPath() + "\\.minecraft\\versions");
-			oldpath.renameTo(tmp);
-
+			FileUtils.moveDirectoryToDirectory(oldpath, tmp, true);
 			Runtime.getRuntime().exec("java -jar " + Tools.Launcher);
 			System.exit(0);
 

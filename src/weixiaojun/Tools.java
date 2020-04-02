@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FileUtils;
-
 import org.json.JSONObject;
 
 public class Tools {
@@ -26,8 +25,8 @@ public class Tools {
 		try {
 			File directory = new File(".");
 
-			JSONFile = new File(directory.getCanonicalPath() + "\\.minecraft\\versions\\WeiTechnologyera\\WeiMineCraftTools.json");
-
+			JSONFile = new File(
+					directory.getCanonicalPath() + "\\.minecraft\\versions\\WeiTechnologyera\\WeiMineCraftTools.json");
 			if (!JSONFile.exists()) {
 				JOptionPane.showMessageDialog(null, "未找到WeiMineCraftTools配置文件，无法正常获取客户端信息！",
 						"未找到WeiMineCraftTools配置文件!", JOptionPane.ERROR_MESSAGE);
