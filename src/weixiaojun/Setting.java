@@ -125,7 +125,7 @@ public class Setting extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-			    	JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(Tools.JSONFile, "UTF-8"));
+					JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(Tools.JSONFile, "UTF-8"));
 					if (!Tools.domestic.equals(s1.isSelected())) {
 						jsonObject.put("domestic", s1.isSelected());
 					}
@@ -147,8 +147,9 @@ public class Setting extends JFrame {
 					if (!Tools.edition.equals(tmp)) {
 						jsonObject.put("edition", tmp);
 					}
-					FileUtils.writeStringToFile(Tools.JSONFile,jsonObject.toString(), "UTF-8");
-				
+					if (jsonObject != null) {
+						FileUtils.writeStringToFile(Tools.JSONFile, jsonObject.toString(), "UTF-8");
+					}
 
 				} catch (IOException e) {
 

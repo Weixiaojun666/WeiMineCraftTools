@@ -24,17 +24,17 @@ public class Tools {
 
 	public static void main(String[] args) {
 		try {
-		File directory = new File(".");
-	
-		JSONFile = new File(directory.getCanonicalPath() + "\\.minecraft\\WeiMineCraftTools.json");
-		
-		if (!JSONFile.exists()) {
-			JOptionPane.showMessageDialog(null, "未找到WeiMineCraftTools配置文件，无法正常获取客户端信息！", "未找到WeiMineCraftTools配置文件!",
-					JOptionPane.ERROR_MESSAGE);
-			System.exit(1);
-		}
-		String client = null;
-		
+			File directory = new File(".");
+
+			JSONFile = new File(directory.getCanonicalPath() + "\\.minecraft\\versions\\WeiTechnologyera\\WeiMineCraftTools.json");
+
+			if (!JSONFile.exists()) {
+				JOptionPane.showMessageDialog(null, "未找到WeiMineCraftTools配置文件，无法正常获取客户端信息！",
+						"未找到WeiMineCraftTools配置文件!", JOptionPane.ERROR_MESSAGE);
+				System.exit(1);
+			}
+			String client = null;
+
 			client = FileUtils.readFileToString(JSONFile, "UTF-8");
 			ClientjsonObject = new JSONObject(client);
 			version = ClientjsonObject.getDouble("version");
@@ -52,7 +52,7 @@ public class Tools {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static void ServerjsonObject(File file) {

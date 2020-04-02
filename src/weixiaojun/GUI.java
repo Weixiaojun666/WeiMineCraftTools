@@ -23,7 +23,7 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 4559646778288230139L;
 
 	public GUI() {
-		setTitle("WeiUpdater");
+		setTitle("WeiMineCraftTools");
 		setSize(720, 480);
 		setResizable(false);
 

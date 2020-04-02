@@ -276,8 +276,8 @@ public class BetterFps extends JDialog implements ActionListener {
 		out.flush();
 		out.close();
 
-    	JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(filenew, "UTF-8"));
-    	jsonObject.put("algorithm",bestAlgorithm);
-    	FileUtils.writeStringToFile(filenew,jsonObject.toString(), "UTF-8");
+		JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(filenew, "UTF-8"));
+		jsonObject.put("algorithm", bestAlgorithm);
+		FileUtils.writeStringToFile(filenew, jsonObject.toString(), "UTF-8");
 	}
 }
