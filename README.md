@@ -22,8 +22,10 @@ WeiTechnologyEra 客户端MCBBS原贴https://www.mcbbs.net/thread-793753-1-1.htm
 
 此程序只是一时兴起写的，因为网上找了一圈没有发现满足我需求的软件
 
-若有需要可以自取修改
+本程序为适配WeiTechnologyEra 客户端 若有需要可以自取修改
 
 依赖库在lib文件夹下
 
 自动安装功能由HMCL实现https://github.com/huanghongxun/HMCL
+
+完整功能演示可下载WeiTechnologyEra 客户端尝试
